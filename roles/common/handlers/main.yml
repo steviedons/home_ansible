@@ -1,0 +1,5 @@
+---
+# Handler to handle common notifications, Handlers are called from other plays
+#
+ - name: restart ssh
+   service: name=sshd state=restarted
