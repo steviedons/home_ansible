@@ -1,0 +1,16 @@
+---
+
+# This playbook installs and sets up squid
+#
+- name: Install squid
+  yum: name=squid state=present
+  tags: squid
+
+- name: Configure squid.conf
+  template: src=squid.j2 dest=/etc/squid/squid.conf
+  tags: squid
+  notify: restart squid
+
+- name: Start up squid
+  service: name=squid state=started enabled=yes
+  tags: squid

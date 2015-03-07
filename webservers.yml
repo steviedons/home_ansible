@@ -1,0 +1,10 @@
+- hosts: webservers
+  sudo: yes
+  roles:
+  - common
+  - webtier
+  handlers:
+  - name: restart ssh
+    service: name=ssh state=restarted
+  - name: restart apache
+    service: name=apache2 state=restarted

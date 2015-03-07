@@ -1,0 +1,9 @@
+- hosts: mailserver
+  sudo: yes
+  roles:
+  - common
+  - mail
+  - motd
+  handlers:
+  - name: restart ssh
+    service: name=ssh state=restarted

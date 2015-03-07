@@ -1,0 +1,12 @@
+[squidserver]
+europa
+
+[mailserver]
+mail.steviedons.com
+
+[generalserver]
+phobos
+metis
+
+[vagrant]
+192.168.1.164 ansible_ssh_user=vagrant

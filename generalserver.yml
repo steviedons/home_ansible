@@ -1,0 +1,9 @@
+- hosts: vagrant
+  sudo: yes
+  roles:
+#  - common
+#  - motd
+  - sudoers
+  handlers:
+  - name: restart ssh
+    service: name=ssh state=restarted

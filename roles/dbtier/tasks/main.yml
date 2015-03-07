@@ -1,0 +1,4 @@
+- name: Install mysql server packages                                         
+  apt: package=$item state=present                                            
+  with_items:                                                                 
+    - mysql-server

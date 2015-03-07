@@ -1,0 +1,15 @@
+- name: Sudoers |Copy sudoers file for safety
+  command: cp -f /etc/sudoers /etc/sudoers.tmp
+
+- name: Sudoers | Create sudoers file backup
+  command: cp -f /etc/sudoers /etc/sudoers.bak
+
+- name: Sudoers | add the new user to the temporary file
+  lineinfile: dest=/etc/sudoers.tmp insertafter=EOF state=present regexp='{{ createuser }} ALL=(ALL) NOPASSWD:ALL' line='{{ createuser }} ALL=(ALL) NOPASSWD:ALL'
+
+- name: Sudoers | also make sure ssh-agent works via sudo
+  lineinfile: dest=/etc/sudoers.tmp state=present regexp='^Defaults env_keep\+\=SSH_AUTH_SOCK' line='Defaults env_keep+=SSH_AUTH_SOCK'
+
+- name: Sudoers | Final sudoers file check
+  shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
+

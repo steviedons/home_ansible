@@ -1,0 +1,8 @@
+{% if use_starttls == "true" %}
+set smtp-use-starttls
+{% endif %}
+set from={{ from_address }}
+set smtp={{ smtp_server }}
+set smtp-auth-user={{ smtp_auth_user }}
+set auth-login={{ auth_login }}
+set smtp-auth-password={{ smtp_auth_password }}
