@@ -54,36 +54,35 @@
   with_items:
       - policycoreutils-python
       - mod_ssl
-#       - screen
-#       - policycoreutils-python 
-#       - iotop 
-#       - yum-plugin-ps 
+      - policycoreutils-python 
+      - iotop 
+      - yum-plugin-ps 
       - yum-cron   
-#       - iptraf 
-#       - acpid 
-#       - man 
-#       - bind-utils 
-#       - vim-enhanced 
-#       - nc 
-#       - zip 
-#       - unzip 
-#       - wget 
+      - iptraf 
+      - acpid 
+      - man 
+      - bind-utils 
+      - vim-enhanced 
+      - nc 
+      - zip 
+      - unzip 
+      - wget 
       - etckeeper 
-#       - links 
-#       - screen 
+      - links 
+      - screen 
       - yum-utils 
-#       - lsof 
-#       - bash-completion 
-#       - ddrescue 
-#       - dos2unix 
-#       - dstat 
-#       - lftp 
-#       - links 
-#       - smartmontools 
-#       - nmap 
-#       - rng-tools 
-#       - sysstat 
-#       - git
+      - lsof 
+      - bash-completion 
+      - ddrescue 
+      - dos2unix 
+      - dstat 
+      - lftp 
+      - links 
+      - smartmontools 
+      - nmap 
+      - rng-tools 
+      - sysstat 
+      - git
       - htop
 
 - name: activate autoupdate
