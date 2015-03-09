@@ -1,9 +1,7 @@
-- hosts: mailserver
+- hosts: vagrant
   sudo: yes
   roles:
   - common
+  - sudoers
   - mail
   - motd
-  handlers:
-  - name: restart ssh
-    service: name=ssh state=restarted

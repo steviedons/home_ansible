@@ -1,0 +1,37 @@
+# role:mail directory:tasks
+#
+- name: Mail | install postfix and dovecot
+  yum: pkg={{ item }} state=installed
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 6
+  with_items:
+      - postfix
+      - dovecot
+      - cyrus-sasl-plain
+
+- name: Mail | setup key directories
+  file: path=/etc/ssl/private owner=root group=root state=directory
+
+- name: Mail | setup mail keys
+  copy: src=/home/steve/ansible/roles/mail/files/mail.key dest=/etc/ssl/private/mail.key owner=root group=root mode=0644
+  sudo: yes
+
+- name: Mail | set up mail cert
+  copy: src=/home/steve/ansible/roles/mail/files/mailcert.pem dest=/etc/ssl/certs/mailcert.pem owner=root group=root mode=0644
+  sudo: yes
+
+- name: Mail | setup dovecot configuration files
+  file: path=/etc/dovecot/dovecot.conf owner=root group=root mode=0644
+  notify: restart dovecot
+
+- name: Mail | setup postfix configuration files
+  file: path=/etc/postfix/main.cf owner=root group=root mode=0644
+  file: path=/etc/postfix/master.cf owner=root group=root mode=0644
+  notify: restart postfix
+
+- name: Mail | Start up postfix
+  service: name=postfix state=started enabled=yes
+  tags: postfix
+
+- name: Mail | Start up dovecot
+  service: name=dovecot state=started enabled=yes
+  tags: dovecot
