@@ -13,10 +13,8 @@ Vagrant.configure(2) do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
 
-  config.vm.define :ansible do |ansible_config|
-    ansible_config.vm.box = "centos6.5"
-    ansible_config.vm.network :private_network, ip: "10.10.10.10"
-  end
+    config.vm.box = "centos6.5"
+    config.vm.network :private_network, ip: "10.10.10.10"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -72,4 +70,8 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+#  config.vm.provision "ansible" do |ansible|
+#      ansible.playbook = "vagrant.yml"
+#  end
+
 end

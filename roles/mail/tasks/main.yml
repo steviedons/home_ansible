@@ -11,21 +11,24 @@
 - name: Mail | setup key directories
   file: path=/etc/ssl/private owner=root group=root state=directory
 
-- name: Mail | setup mail keys
-  copy: src=/home/steve/ansible/roles/mail/files/mail.key dest=/etc/ssl/private/mail.key owner=root group=root mode=0644
+- name: Mail | setup mail key from ansible vault
+  copy: content="{{ mail_key }}" dest=/etc/ssl/private/mail.key owner=root group=root mode=0644
   sudo: yes
 
 - name: Mail | set up mail cert
-  copy: src=/home/steve/ansible/roles/mail/files/mailcert.pem dest=/etc/ssl/certs/mailcert.pem owner=root group=root mode=0644
+  copy: src=mailcert.pem dest=/etc/ssl/certs/mailcert.pem owner=root group=root mode=0644
   sudo: yes
 
 - name: Mail | setup dovecot configuration files
-  file: path=/etc/dovecot/dovecot.conf owner=root group=root mode=0644
+  copy: src=dovecot.conf dest=/etc/dovecot/dovecot.conf owner=root group=root mode=0644
   notify: restart dovecot
 
-- name: Mail | setup postfix configuration files
-  file: path=/etc/postfix/main.cf owner=root group=root mode=0644
-  file: path=/etc/postfix/master.cf owner=root group=root mode=0644
+- name: Mail | setup postfix master.cf configuration files
+  copy: src=master.cf dest=/etc/postfix/master.cf owner=root group=root mode=0644 force=yes backup=yes
+  notify: restart postfix
+ 
+- name: Mail | setup postfix main.cf configuration files
+  copy: src=main.cf dest=/etc/postfix/main.cf owner=root group=root mode=0644 force=yes backup=yes
   notify: restart postfix
 
 - name: Mail | Start up postfix

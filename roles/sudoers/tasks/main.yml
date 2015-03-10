@@ -5,7 +5,7 @@
   command: cp -f /etc/sudoers /etc/sudoers.bak
 
 - name: Sudoers | Add the new user to the temporary file
-  lineinfile: dest=/etc/sudoers.tmp insertafter=EOF state=present regexp='{{ createuser }} ALL=(ALL) NOPASSWD:ALL' line='{{ createuser }} ALL=(ALL) NOPASSWD:ALL'
+  lineinfile: dest=/etc/sudoers.tmp state=present regexp='^{{ createuser }} ALL=(ALL) NOPASSWD:ALL' line='{{ createuser }} ALL=(ALL) NOPASSWD:ALL'
 
 - name: Sudoers | Also make sure ssh-agent works via sudo
   lineinfile: dest=/etc/sudoers.tmp state=present regexp='^Defaults env_keep\+\=SSH_AUTH_SOCK' line='Defaults env_keep+=SSH_AUTH_SOCK'
