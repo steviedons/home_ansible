@@ -96,7 +96,7 @@ myhostname = mail.steviedons.com
 # to recipient addresses that have no @domain part.
 #
 #myorigin = $myhostname
-myorigin = /etc/mailname
+myorigin = steviedons.com
 
 # RECEIVING MAIL
 
@@ -686,3 +686,10 @@ smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
 smtpd_tls_security_level=may
 smtpd_tls_protocols = !SSLv2, !SSLv3
+
+##########
+# Increasing default mailbox and message size
+##########
+
+mailbox_size_limit = 512000000
+message_size_limit = 20480000

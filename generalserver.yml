@@ -1,7 +1,6 @@
-- hosts: vagrant
+- hosts: generalserver
   sudo: yes
   roles:
-    #  - common
-    #  - motd
-    #  - sudoers
-  - mail
+      - common
+      - motd
+      - sudoers
