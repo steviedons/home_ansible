@@ -1,4 +1,4 @@
-- hosts: generalserver
+- hosts: vagrant
   sudo: yes
   roles:
       - common

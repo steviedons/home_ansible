@@ -6,7 +6,7 @@
 
 - name: Add users to sudoers file parameters
   lineinfile:
-   dest=/etc/ssh/sshd_config
+   dest=/etc/sudoers
    state=present
    backup=yes
    regexp=^{{ item.key }}
