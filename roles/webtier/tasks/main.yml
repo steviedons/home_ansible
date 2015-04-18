@@ -1,4 +1,6 @@
-- name: Install apache packages                                               
+# This will only work on debian/ubuntu servers
+
+- name: Install apache packages
   apt: package=$item state=present                                            
   with_items:                                                                 
     - apache2                                                                 
