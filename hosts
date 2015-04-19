@@ -10,4 +10,4 @@ mail.steviedons.com
 192.168.1.230
 
 [vagrant]
-192.168.1.182  ansible_ssh_user=vagrant
+192.168.1.26  ansible_ssh_user=root
