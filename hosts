@@ -11,3 +11,6 @@ mail.steviedons.com
 
 [vagrant]
 192.168.1.26  ansible_ssh_user=root
+
+[aws]
+52.17.29.113 ansible_ssh_user=centos

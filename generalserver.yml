@@ -1,4 +1,4 @@
-- hosts: vagrant
+- hosts: aws
   sudo: yes
   roles:
       - common
