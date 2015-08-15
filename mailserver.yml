@@ -1,7 +1,0 @@
-- hosts: mailserver
-  sudo: yes
-  roles:
-    - common
-    - sudoers
-    - mail
-    - motd

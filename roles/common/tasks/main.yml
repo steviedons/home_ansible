@@ -93,17 +93,6 @@
 - name: activate autoupdate
   service: enabled=yes state=started name=yum-cron
 
-- name: add dotfiles to user name
-  git: repo=https://github.com/steviedons/dotfiles.git dest=/home/steve/dotfiles 
-
-- name: add screenfetch script
-  copy: src=screenfetch-dev dest=/usr/local/bin mode="u+rx,g+rx,o+rx"
-
-- name: run the dotfiles setup script
-  command: /home/steve/dotfiles/dotfile_update.sh
-  sudo: yes
-  sudo_user: steve
-
 - name: initialize etckeeper
   command: /usr/bin/etckeeper init creates=/etc/.git/description
 

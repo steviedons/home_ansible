@@ -1,17 +1,12 @@
 [squidserver]
-europa
-
-[mailserver]
-mail.steviedons.com
+phobos
 
 [generalserver]
-#phobos
-#metis
-192.168.1.230
-
-[vagrant]
-192.168.1.26  ansible_ssh_user=root
+phobos
 
 [aws]
 owncloud.steviedons.com ansible_ssh_user=centos
-wiki.steviedons.com ansible_ssh_user=centos
+
+[testing]
+192.168.1.32 ansible_ssh_user=root
+192.168.1.230

@@ -1,4 +1,3 @@
 ---
-#- include: mailserver.yml
-#- include: squidserver.yml
 - include: generalserver.yml
+- include: squidserver.yml

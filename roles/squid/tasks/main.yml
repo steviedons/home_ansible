@@ -11,6 +11,9 @@
   tags: squid
   notify: restart squid
 
+- name: Add the cache dir
+  file: path=/var/cache/squid state=directory group=squid owner=squid
+    
 - name: Start up squid
   service: name=squid state=started enabled=yes
   tags: squid

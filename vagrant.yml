@@ -1,6 +1,0 @@
-- hosts: vagrant
-  sudo: yes
-  roles:
-   - common
-   - motd
-   - sudoers

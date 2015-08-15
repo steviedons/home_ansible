@@ -1,11 +1,7 @@
 - hosts: squidserver
   sudo: yes
   roles:
-  - common
-  - motd
   - squid
   handlers:
-  - name: restart ssh
-    service: name=ssh state=restarted
   - name: restart squid
     service: name=squid state=restarted
