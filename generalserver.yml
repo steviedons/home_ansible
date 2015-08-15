@@ -1,6 +1,7 @@
 - hosts: testing:generalserver
   sudo: yes
   roles:
+      - user
       - common
       - motd
       - sudoers
