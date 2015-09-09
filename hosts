@@ -1,8 +1,5 @@
-[squidserver]
-phobos
-
 [generalserver]
-phobos
+phobos  ansible_ssh_user=root
 
 [aws]
 owncloud.steviedons.com ansible_ssh_user=centos

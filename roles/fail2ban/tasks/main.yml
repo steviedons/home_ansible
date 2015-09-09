@@ -1,0 +1,10 @@
+# role:fail2ban directory:tasks
+- name: install fail2ban package
+  yum: pkg=fail2ban state=installed
+
+- name: activate fail2ban for ssh
+  copy: src=jail.local dest=/etc/fail2ban/jail.local  owner=root group=root mode=0644
+  notify: restart fail2ban
+
+- name: make sure service is enabled and started
+  service: name=fail2ban state=started enabled=yes
