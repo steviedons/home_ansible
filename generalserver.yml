@@ -1,8 +1,6 @@
-- hosts: generalserver
-  sudo: yes
+- hosts: all
   roles:
-      - user
       - common
+      - user
       - motd
-      - sudoers
       - fail2ban

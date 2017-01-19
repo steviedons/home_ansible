@@ -1,30 +1,7 @@
 ---
-- name: update ssh parameters
-  lineinfile:
-    dest=/etc/ssh/sshd_config
-    state=present
-    regexp=^{{ item.key }}
-    line="{{ item.key }} {{ item.value }}"
-    insertafter=EOF
-  with_items:
-    - { key: 'PermitRootLogin', value: 'no' }
-    - { key: 'LoginGraceTime', value: '20' }
-    - { key: 'X11Forwarding', value: 'no' }
-    - { key: 'ClientAliveInterval', value: '30' }
-    - { key: 'ClientAliveCountMax', value: '1000' }
-  notify:
-  - restart ssh
 
-- name: get epel-repo rpm RHEL6
-  get_url: dest=/tmp/epel-release.rpm  url=http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 6
-
-- name: get epel-repo for RHEL7
-  get_url: dest=/tmp/epel-release.rpm url='http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm'
-  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version|int == 7
-
-- name: install epel-repo rpm
-  yum: pkg=/tmp/epel-release.rpm state=installed
+- name: Install EPEL repo.
+  yum: name=epel-release state=present
 
 - name: install my packages
   yum: pkg={{ item }} state=installed
@@ -32,7 +9,6 @@
   with_items:
       - policycoreutils-python
       - mod_ssl
-      - policycoreutils-python 
       - iotop 
       - yum-plugin-ps 
       - yum-cron   
@@ -75,5 +51,4 @@
 
 - name: make first commit
   command: /usr/bin/etckeeper commit -m "init" creates=/etc/.git/COMMIT_EDITMSG
-
 

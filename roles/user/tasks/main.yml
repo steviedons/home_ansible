@@ -14,8 +14,11 @@
      path='/home/{{ createuser }}/.ssh/authorized_keys'
      manage_dir=no
   
-# - name: add dotfiles to user name
-#   git: 'repo=https://github.com/steviedons/dotfiles.git' dest=/home/steve/dotfiles 
+ - name: add dotfiles to user name
+   git: 
+     repo=https://github.com/steviedons/dotfiles.git 
+     dest=/home/steve/dotfiles 
+     update=no
 
  - name: add screenfetch script
    copy: src=screenfetch-dev dest=/usr/local/bin mode="u+rx,g+rx,o+rx"
