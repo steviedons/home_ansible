@@ -4,20 +4,20 @@
 
  - name: Create {{ user }} account
    user: name={{ user }} comment="{{ user_name }}" group={{ user }} createhome=yes home=/home/{{ user }}  shell=/bin/bash password={{ steve_password }} state=present
-  
+
  - name: ensure ssh directory exists for {{ user }}
    file: dest=/home/{{ user }}/.ssh owner={{ user }} group={{ group }} state=directory mode=700
-  
+
  - name: Setup | authorized key upload
    authorized_key: user={{ createuser }}
      key="{{ steve_key }}"
      path='/home/{{ createuser }}/.ssh/authorized_keys'
      manage_dir=no
-  
+
  - name: add dotfiles to user name
-   git: 
-     repo=https://github.com/steviedons/dotfiles.git 
-     dest=/home/steve/dotfiles 
+   git:
+     repo=https://github.com/steviedons/dotfiles.git
+     dest=/home/steve/dotfiles
      update=no
 
  - name: add screenfetch script

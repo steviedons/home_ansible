@@ -8,40 +8,36 @@
   when: ansible_os_family == 'RedHat'
   with_items:
       - policycoreutils-python
-      - mod_ssl
-      - iotop 
-      - yum-plugin-ps 
-      - yum-cron   
-      - iptraf 
-      - acpid 
-      - man 
-      - bind-utils 
-      - vim-enhanced 
-      - nc 
-      - zip 
-      - unzip 
-      - wget 
-      - etckeeper 
-      - links 
-      - screen 
-      - yum-utils 
-      - lsof 
-      - bash-completion 
-      - ddrescue 
-      - dos2unix 
-      - dstat 
-      - lftp 
-      - links 
-      - smartmontools 
-      - nmap 
-      - rng-tools 
-      - sysstat 
+      - iotop
+      - yum-plugin-ps
+      - yum-cron
+      - iptraf
+      - acpid
+      - man
+      - bind-utils
+      - vim-enhanced
+      - nc
+      - zip
+      - unzip
+      - wget
+      - etckeeper
+      - links
+      - screen
+      - yum-utils
+      - lsof
+      - bash-completion
+      - ddrescue
+      - dos2unix
+      - dstat
+      - links
+      - smartmontools
+      - nmap
+      - rng-tools
+      - sysstat
       - git
       - htop
-      - python-argcomplete
       - npm
-      - drupal6-drush
-      - screen
+      - tmux
 
 - name: activate autoupdate
   service: enabled=yes state=started name=yum-cron
@@ -51,4 +47,3 @@
 
 - name: make first commit
   command: /usr/bin/etckeeper commit -m "init" creates=/etc/.git/COMMIT_EDITMSG
-
