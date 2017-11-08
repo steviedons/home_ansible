@@ -38,6 +38,7 @@
       - htop
       - npm
       - tmux
+      - yum-plugin-security
 
 - name: activate autoupdate
   service: enabled=yes state=started name=yum-cron
