@@ -1,0 +1,9 @@
+localnet: 192.168.1.0/24
+group: steve
+user: steve
+user_name: "Stephen Donovan"
+use_starttls: true
+auth_login: userid
+createuser: steve
+steve_password: usrNyRzSSq1x6
+steve_key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC//pH6SLKzy5iWlzbpX1yMY6AkkiJrRtCLVynzKK9ksalFL9akH/RlgeSHz3X+C2tPel2XnrUAY4Pl4yX38Ogzh5cIJxkrxXS5eA03+hZ5Q6gHzg4JVH7omftQgFkhW5wrFFn9mnMkmmI3Ix++LmYYNMgHwiphikWYQfHBwUUN7w4vCVpjJFIoL+P4wmOday5ymxJAc3e20HnmB760ODAblPT1SM8T5y+wZg762DFp7Tnba0unW7wdfkc2lL9vT/YyivnnL3gU8MfD6JyCP8GZhfcCGyD+7rNG9ZGIhbYLuEyuOhkE4dkpOTSnKpSlWpnQkrpBsh6pZePTQOnM5nzt steve@pixel
