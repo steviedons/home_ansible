@@ -20,9 +20,6 @@
      dest=/home/steve/dotfiles
      update=no
 
- - name: add screenfetch script
-   copy: src=screenfetch-dev dest=/usr/local/bin mode="u+rx,g+rx,o+rx"
-
  - name: run the dotfiles setup script
    command: /home/steve/dotfiles/dotfile_update.sh
    become_user: steve
