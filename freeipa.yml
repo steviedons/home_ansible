@@ -1,0 +1,18 @@
+---
+- hosts: freeipa
+  vars_files:
+  - group_vars/freeipa
+  become: yes
+
+  vars_prompt:
+  - name: ipaserver_admin_password
+    prompt: "What should the admin password be for IPA?"
+    private: yes
+    default: "{{ ipaserver_admin_password }}"
+  - name: ipaserver_dir_admin_password
+    prompt: "What should the admin password be for the Directory Server?"
+    private: yes
+    default: "{{ ipaserver_dir_admin_password }}"
+
+  roles:
+  - { role: gregswift.ipaserver }
