@@ -1,0 +1,8 @@
+- hosts: jenkins
+  sudo: yes
+  roles:
+          #      - common
+          # - user
+          #- motd
+          #- sudoers
+      - jenkins

@@ -1,7 +1,0 @@
-- hosts: home
-  sudo: yes
-  roles:
-      - common
-      - user
-      - motd
-      - sudoers

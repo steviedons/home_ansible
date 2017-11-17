@@ -1,0 +1,36 @@
+- name: Copy JDK rpm file to server
+  copy:
+     src: jdk-8u151-linux-x64.rpm
+     dest: /tmp/jdk-8u151-linux-x64.rpm
+
+- name: Install JDK package.
+  yum:
+     name: /tmp/jdk-8u151-linux-x64.rpm
+     state: present
+
+- name: Add the Jenkins yum repo
+  yum_repository:
+     name: jenkins-stable
+     description: Jenkins repo
+     file: jenkins.repo
+     gpgkey: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+     baseurl: http://pkg.jenkins.io/redhat-stable
+     gpgcheck: yes
+     enabled: yes
+
+- name: Install Jenkins
+  yum:
+     name: jenkins
+     state: present
+
+- name: Open up port 8080 in firewalld for the Jenkins server
+  firewalld:
+     port: 8080/tcp
+     permanent: true
+     state: enabled
+
+- name: Start up Jenkins and make sure its enabled
+  systemd:
+     name: jenkins
+     state: started
+     enabled: yes
