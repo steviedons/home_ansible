@@ -10,3 +10,9 @@ owncloud.steviedons.com ansible_ssh_user=centos
 
 [jenkins]
 192.168.1.241
+
+[docker]
+192.168.1.242
+
+[freeipa]
+192.168.1.253
