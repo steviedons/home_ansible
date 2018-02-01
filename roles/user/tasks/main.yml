@@ -20,15 +20,9 @@
      dest=/home/steve/dotfiles
      update=no
 
- - name: add screenfetch script
-   copy: src=screenfetch-dev dest=/usr/local/bin mode="u+rx,g+rx,o+rx"
-
- - name: run the dotfiles setup script
-   command: /home/steve/dotfiles/dotfile_update.sh
-   become_user: steve
-
- - name: add git email
-   command: git config --global user.email "steviedons@gmail.com"
-
- - name: add git username
-   command: git config --global user.name "Stephen Donovan"
+# TODO: Complains when using root need this to run as steve
+# - name: add git email
+#   command: git config --global user.email "steviedons@gmail.com"
+#
+# - name: add git username
+#   command: git config --global user.name "Stephen Donovan"

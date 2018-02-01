@@ -1,0 +1,28 @@
+---
+
+- name: Install packages needed by docker-ce
+  yum: pkg={{ item }} state=installed
+  when: ansible_os_family == 'RedHat'
+  with_items:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+
+- name: Add docker-ce repo
+  command: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: Use the edge version of docker
+  command: yum-config-manager --enable docker-ce-edge
+
+- name: Install docker-ce
+  yum:
+    name: docker-ce
+    state: present
+
+- name: Enable docker-ce service and start it
+  systemd: state=started name=docker enabled=yes
+
+- name: Add user {{ user }} to the docker group
+  user:
+    name: "{{ user }}"
+    groups: steve, wheel, docker

@@ -1,6 +1,8 @@
-- hosts: all
+- hosts: docker
+  sudo: yes
   roles:
-      - common
       - user
+      - common
       - motd
       - fail2ban
+      - docker
