@@ -1,3 +1,5 @@
+#TODO: Need to get this file off of the internet before the install as github cant store the file as its to big
+
 - name: Copy JDK rpm file to server
   copy:
      src: jdk-8u151-linux-x64.rpm
